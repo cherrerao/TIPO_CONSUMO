@@ -8,92 +8,82 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', Arial, sans-serif; /* Define la fuente principal del cuerpo */
-            margin: 0; /* Elimina el margen predeterminado */
-            padding: 0; /* Elimina el relleno predeterminado */
-            background-image: url('img_fondo.jpg'); /* Establece una imagen de fondo */
-            background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-            background-position: center; /* Centra la imagen de fondo */
-            background-attachment: fixed; /* Fija la imagen para que no se mueva al hacer scroll */
-            color: #333; /* Define el color del texto */
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('img_fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
         }
         .container {
-            max-width: 1200px; /* Define el ancho máximo del contenedor */
-            margin: 40px auto; /* Centra el contenedor horizontalmente y agrega un margen superior/inferior */
-            padding: 20px; /* Agrega espacio interno dentro del contenedor */
-            background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del contenedor */
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h2 {
-            text-align: center; /* Centra el texto del título */
-            color: #4CAF50; /* Define el color del texto del título */
-            margin-bottom: 20px; /* Agrega un margen inferior */
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
         }
         .search-bar {
-            margin-bottom: 20px; /* Agrega un margen inferior */
-            text-align: center; /* Centra el contenido de la barra de búsqueda */
+            margin-bottom: 20px;
+            text-align: center;
         }
         .search-bar input {
-            width: 80%; /* Define el ancho del campo de búsqueda */
-            padding: 10px; /* Agrega espacio interno al campo */
-            font-size: 16px; /* Define el tamaño de la fuente */
-            border: 1px solid #ddd; /* Agrega un borde gris claro */
-            border-radius: 5px; /* Bordes redondeados */
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         .download-link {
-            text-align: center; /* Centra el enlace de descarga */
-            margin-bottom: 20px; /* Agrega un margen inferior */
+            text-align: center;
+            margin-bottom: 20px;
         }
         .download-link a {
-            text-decoration: none; /* Elimina el subrayado del enlace */
-            color: #fff; /* Define el color del texto del enlace */
-            background-color: #4CAF50; /* Define el color de fondo del enlace */
-            padding: 10px 20px; /* Agrega espacio interno al enlace */
-            border-radius: 5px; /* Bordes redondeados */
-            font-size: 16px; /* Define el tamaño de la fuente */
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
         }
         table {
-            width: 100%; /* Hace que la tabla ocupe todo el ancho disponible */
-            border-collapse: collapse; /* Elimina los espacios entre bordes de las celdas */
-            border-radius: 10px; /* Bordes redondeados */
-            overflow: hidden; /* Oculta cualquier contenido que sobresalga */
-            background: #fff; /* Fondo blanco para la tabla */
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
         }
         th, td {
-            border: 1px solid #ddd; /* Agrega un borde gris claro a las celdas */
-            padding: 12px; /* Agrega espacio interno a las celdas */
-            text-align: left; /* Alinea el texto a la izquierda */
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
         }
         th {
-            background-color: #4CAF50; /* Fondo verde para los encabezados */
-            color: white; /* Texto blanco para los encabezados */
-            font-weight: 500; /* Define el grosor del texto */
-        }
-        th.center {
-            text-align: center; /* Centra el texto de los encabezados con la clase "center" */
+            background-color: #4CAF50;
+            color: white;
         }
         tr:nth-child(even) {
-            background-color: #f2f2f2; /* Fondo gris claro para las filas pares */
+            background-color: #f2f2f2;
         }
         tr:hover {
-            background-color: #eafaf1; /* Fondo verde claro al pasar el cursor sobre una fila */
+            background-color: #eafaf1;
         }
         td {
-            font-size: 14px; /* Define el tamaño de la fuente para las celdas */
+            font-size: 14px;
+        }
+        /* Clase para centrar el contenido */
+        .center {
+            text-align: center;
         }
 
-        .center {
-             text-align: center; /* Centra el texto horizontalmente */
-             vertical-align: middle; /* Centra el texto verticalmente */
-        }
-        @media (max-width: 768px) {
-            table {
-                font-size: 12px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
-            }
-            th, td {
-                padding: 8px; /* Reduce el espacio interno en pantallas pequeñas */
-            }
+        /* Clase para alinear el contenido de la columna "Descripción" a la izquierda */
+        .left {
+            text-align: left;
         }
     </style>
 </head>
@@ -116,85 +106,69 @@
 
     <script>
         function cargarExcel() {
-            fetch('DIGITACION.xlsx') // Descarga el archivo Excel desde el servidor
-                .then(response => response.blob()) // Convierte la respuesta en un objeto Blob
-                .then(blob => blob.arrayBuffer()) // Convierte el Blob en un ArrayBuffer
+            fetch('DIGITACION.xlsx')
+                .then(response => response.arrayBuffer())
                 .then(data => {
-                    let workbook = XLSX.read(data, { type: 'array' }); // Lee el archivo Excel
-                    let sheet = workbook.Sheets[workbook.SheetNames[0]]; // Obtiene la primera hoja del archivo
-                    let jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 }); // Convierte la hoja en un arreglo de arreglos
-                    
-                    let tableHeader = document.getElementById("table-header"); // Obtiene el encabezado de la tabla
-                    let tableBody = document.getElementById("table-body"); // Obtiene el cuerpo de la tabla
-                    
-                    tableHeader.innerHTML = ""; // Limpia el contenido previo del encabezado
-                    tableBody.innerHTML = ""; // Limpia el contenido previo del cuerpo
+                    let workbook = XLSX.read(data, { type: 'array' });
+                    let sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    let jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
 
-                    // Encuentra la fila que contiene el encabezado "COD SISMED"
+                    let tableHeader = document.getElementById("table-header");
+                    let tableBody = document.getElementById("table-body");
+
+                    tableHeader.innerHTML = "";
+                    tableBody.innerHTML = "";
+
+                    // Encuentra la fila que contiene los encabezados reales
                     let headerIndex = jsonData.findIndex(row => row.includes("COD SISMED"));
                     if (headerIndex === -1) {
-                        console.error("No se encontró el encabezado 'COD SISMED' en el archivo Excel.");
+                        console.error("No se encontró la fila de encabezados en el archivo Excel.");
                         return;
                     }
 
-                    // Toma la fila del encabezado
-                    const headers = jsonData[headerIndex];
-
-                    // Crear encabezados de la tabla
+                    // Usa la fila de encabezados reales
+                    let headers = jsonData[headerIndex];
                     headers.forEach(header => {
-                        let th = document.createElement("th"); // Crea un elemento <th> para cada encabezado
-                        th.textContent = header; // Asigna el texto del encabezado
-
-                        if (header.toLowerCase() !== "descripcion") { // Si no es "Descripción", centra el texto
-                            th.classList.add("center");
-                        }
-
-                        tableHeader.appendChild(th); // Agrega el encabezado a la tabla
+                        let th = document.createElement("th");
+                        th.textContent = header;
+                        th.classList.add("center"); // Centra todas las cabeceras
+                        tableHeader.appendChild(th);
                     });
 
-                    // Crear filas de la tabla
-                    jsonData.slice(headerIndex + 1).forEach(row => { // Itera sobre las filas de datos (después del encabezado)
-                        if (row.length === 0) return; // Ignora filas vacías
-
-                        let tr = document.createElement("tr"); // Crea una fila <tr>
+                    // Procesa las filas de datos (después de los encabezados)
+                    jsonData.slice(headerIndex + 1).forEach(row => {
+                        let tr = document.createElement("tr");
                         row.forEach((cell, index) => {
-                            let td = document.createElement("td"); // Crea una celda <td>
-                            td.textContent = cell; // Asigna el contenido de la celda
+                            let td = document.createElement("td");
+                            td.textContent = cell;
 
-                            // Centrar todas las celdas excepto las de la columna "Descripción"
-                            if (headers[index].toLowerCase() !== "descripcion") {
+                            // Aplica la clase 'left' solo al contenido de la columna "DESCRIPCION"
+                            if (headers[index].toLowerCase() === "descripcion") {
+                                td.classList.add("left");
+                            } else {
                                 td.classList.add("center");
                             }
 
-                            tr.appendChild(td); // Agrega la celda a la fila
+                            tr.appendChild(td);
                         });
-                        tableBody.appendChild(tr); // Agrega la fila al cuerpo de la tabla
+                        tableBody.appendChild(tr);
                     });
                 })
-                .catch(error => console.error("Error al cargar el archivo Excel:", error)); // Maneja errores
+                .catch(error => console.error("Error al cargar el archivo Excel:", error));
         }
 
-        window.onload = cargarExcel; // Llama a la función cargarExcel cuando la página se carga
-    </script>
-    <script>
+        window.onload = cargarExcel;
+
         function filtrarTabla() {
-            const input = document.getElementById("search-input"); // Obtiene el campo de búsqueda
-            const filter = input.value.toLowerCase(); // Convierte el texto ingresado a minúsculas
-            const tableBody = document.getElementById("table-body"); // Obtiene el cuerpo de la tabla
-            const rows = tableBody.getElementsByTagName("tr"); // Obtiene todas las filas de la tabla
+            const input = document.getElementById("search-input");
+            const filter = input.value.toLowerCase();
+            const tableBody = document.getElementById("table-body");
+            const rows = tableBody.getElementsByTagName("tr");
 
-            for (let i = 0; i < rows.length; i++) { // Itera sobre cada fila
-                const cells = rows[i].getElementsByTagName("td"); // Obtiene las celdas de la fila
-                let match = false;
-
-                for (let j = 0; j < cells.length; j++) { // Itera sobre cada celda
-                    if (cells[j].textContent.toLowerCase().includes(filter)) { // Verifica si el texto coincide con el filtro
-                        match = true;
-                        break;
-                    }
-                }
-
-                rows[i].style.display = match ? "" : "none"; // Muestra u oculta la fila según el resultado
+            for (let row of rows) {
+                let cells = row.getElementsByTagName("td");
+                let match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+                row.style.display = match ? "" : "none";
             }
         }
     </script>
