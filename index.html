@@ -129,9 +129,19 @@
                     
                     tableHeader.innerHTML = ""; // Limpia el contenido previo del encabezado
                     tableBody.innerHTML = ""; // Limpia el contenido previo del cuerpo
-                    
+
+                    // Encuentra la fila que contiene el encabezado "COD SISMED"
+                    let headerIndex = jsonData.findIndex(row => row.includes("COD SISMED"));
+                    if (headerIndex === -1) {
+                        console.error("No se encontró el encabezado 'COD SISMED' en el archivo Excel.");
+                        return;
+                    }
+
+                    // Toma la fila del encabezado
+                    const headers = jsonData[headerIndex];
+
                     // Crear encabezados de la tabla
-                    jsonData[0].forEach(header => {
+                    headers.forEach(header => {
                         let th = document.createElement("th"); // Crea un elemento <th> para cada encabezado
                         th.textContent = header; // Asigna el texto del encabezado
 
@@ -141,16 +151,18 @@
 
                         tableHeader.appendChild(th); // Agrega el encabezado a la tabla
                     });
-                    
+
                     // Crear filas de la tabla
-                    jsonData.slice(1).forEach(row => { // Itera sobre las filas de datos (excluyendo los encabezados)
+                    jsonData.slice(headerIndex + 1).forEach(row => { // Itera sobre las filas de datos (después del encabezado)
+                        if (row.length === 0) return; // Ignora filas vacías
+
                         let tr = document.createElement("tr"); // Crea una fila <tr>
                         row.forEach((cell, index) => {
                             let td = document.createElement("td"); // Crea una celda <td>
                             td.textContent = cell; // Asigna el contenido de la celda
 
                             // Centrar todas las celdas excepto las de la columna "Descripción"
-                            if (jsonData[0][index].toLowerCase() !== "descripcion") {
+                            if (headers[index].toLowerCase() !== "descripcion") {
                                 td.classList.add("center");
                             }
 
